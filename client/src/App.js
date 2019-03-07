@@ -12,13 +12,20 @@ class App extends Component {
     score: 0
   };
 
+  win = () => {
+    if (this.state.score === 12){
+      alert("WELL DONE!");
+      this.restart();
+    }
+  }
+
   restart = () => {
     if (this.state.score > this.state.topscore) {
       this.setState({ topscore: this.state.score });
       this.state.friends.forEach(friend => {
         friend.clicked = false;
       });
-      alert("you lose");
+      alert("You Lose This Time Spiderman!");
       this.setState({ score: 0 });
       return true;
     }
@@ -33,8 +40,7 @@ class App extends Component {
           this.setState({ friends, score: this.state.score + 1 });
           friends.sort(() => Math.random() - 0.5);
           return true;
-        }
-        else {
+        } else {
           this.restart();
         }
       }
