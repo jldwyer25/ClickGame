@@ -1,39 +1,39 @@
 .card {
   background: #fff;
   border-radius: 2px;
-  height: 325px;
+  height: 225px;
   margin: 1rem;
   position: relative;
-  width: 325px;
+  width: 225px;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   text-align: left;
 }
 
 .card > .img-container {
-  height: 60%;
+  height: 100%;
   overflow: hidden;
   text-align: center;
   background:#6CADDC;
 }
 .card > .img-container > img {
-  width: 60%
+  width: 100%
 }
 
-.card > .content {
+/* .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 15px;
-}
+} */
 
-.card > .content > ul {
+/* .card > .content > ul {
   list-style-type: none;
 }
 
 .card > .content > ul > li {
   margin-top: 18px;
-}
+} */
 
-.card > .remove {
+.card > .shuffle {
   color: #ff1744;
   font-size: 48px;
   position: absolute;
@@ -42,6 +42,6 @@
   cursor: pointer;
 }
 
-.card > .remove:hover {
+.card > .shuffle:hover {
   color: #d50000;
 }

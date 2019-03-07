@@ -12,32 +12,51 @@ class App extends Component {
     score: 0
   };
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    // const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    // this.setState({ friends });
-    this.setState({friends, score: this.state.score +1});
-   friends.sort(() => Math.random() -0.5);
-   this.state.score++;
-   
-  };
+  restart = () => {
+    if (this.state.score > this.state.topscore) {
+      this.setState({ topscore: this.state.score });
+      this.state.friends.forEach(friend => {
+        friend.clicked = false;
+      });
+      alert("you lose");
+      this.setState({ score: 0 });
+      return true;
+    }
+  }
+
+  shuffleFriend = id => {
+    this.state.friends.find((clicked, i) => {
+      if (clicked.id === id) {
+        if (friends[i].clicked === false) {
+          //this code iterates through all the friend objects
+          friends[i].clicked = true;
+          this.setState({ friends, score: this.state.score + 1 });
+          friends.sort(() => Math.random() - 0.5);
+          return true;
+        }
+        else {
+          this.restart();
+        }
+      }
+    })
+  }
+
+
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
       <Wrapper>
-        <Title>Friends List  score:{this.state.score}</Title>
+        <Title>Score: {this.state.score} Top Score: {this.state.topscore} </Title>
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+            shuffleFriend={this.shuffleFriend}
             id={friend.id}
             key={friend.id}
             name={friend.name}
             image={friend.image}
             occupation={friend.occupation}
             location={friend.location}
-            saved = {friend.saved}
           />
         ))}
       </Wrapper>
